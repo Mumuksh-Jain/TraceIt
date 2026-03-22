@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from sentence_transformers import SentenceTransformer, util
-
+import os
 app = Flask(__name__)
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -32,4 +32,5 @@ def match():
     return jsonify({'matches': results})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
