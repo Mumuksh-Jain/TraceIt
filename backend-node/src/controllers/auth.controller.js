@@ -21,9 +21,10 @@ async function Register(req,res) {
     const token=jwt.sign({
      id:user._id
     },process.env.JWT_SECRET_KEY,{expiresIn:"1h"})
-    res.cookie("token", token, {
+  res.cookie("token", token, {
     httpOnly: true,
-    sameSite: "lax"    // add this
+    sameSite: "none",    // required for cross-domain
+    secure: true,        // required when sameSite is "none"
 })
     return res.status(200).json({
         message:"User successfull registered"
@@ -56,8 +57,10 @@ async function login(req,res) {
     },process.env.JWT_SECRET_KEY,{expiresIn:"1h"})
     res.cookie("token", token, {
     httpOnly: true,
-    sameSite: "lax"    // add this
-})
+    sameSite: "none",
+    secure: true,
+    maxAge: 60 * 60 * 1000 // 1 hour
+})  
     return res.status(200).json({
         message:"Login successfull",
         user: { id: user._id, username: user.username, email: user.email }
