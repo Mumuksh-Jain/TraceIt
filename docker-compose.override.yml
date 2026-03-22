@@ -1,0 +1,13 @@
+services:
+  node-backend:
+    volumes:
+      - ./backend-node:/app
+      - /app/node_modules
+    command: npx nodemon --legacy-watch server.js
+    environment:
+      - NODE_ENV=development
+
+  python-ai:
+    volumes:
+      - ./backend-python:/app
+    command: python -m flask run --host=0.0.0.0 --port=5000 --reload

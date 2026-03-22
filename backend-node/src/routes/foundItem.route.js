@@ -1,0 +1,12 @@
+const express=require("express")
+const router=express.Router()
+const protectRoute=require("../middlewares/auth.middleware")
+const {upload}=require("../services/storage.service")
+const foundItemController=require("../controllers/foundItem.controller")
+router.post("/create", protectRoute, upload.single("image"), foundItemController.createItem)
+router.get("/",foundItemController.getItem)
+router.delete("/delete/:id",protectRoute,foundItemController.deleteItem)
+router.patch("/status/:id",protectRoute,foundItemController.updateStatus)
+router.get("/my-items",protectRoute,foundItemController.getMyItems)
+router.get("/:id",foundItemController.getItembyId)
+module.exports=router
