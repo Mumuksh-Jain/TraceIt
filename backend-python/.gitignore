@@ -4,5 +4,6 @@ __pycache__/
 .env
 .venv/
 venv/
+venv_new/
 *.egg-info/
 python-documentation.md

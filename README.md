@@ -2,9 +2,10 @@
 
 ![React](https://img.shields.io/badge/React-Vite-61DAFB?style=flat&logo=react) ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat&logo=node.js) ![Python](https://img.shields.io/badge/Python-Flask-3776AB?style=flat&logo=python) ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat&logo=mongodb) ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat&logo=docker) ![JWT](https://img.shields.io/badge/Auth-JWT-000000?style=flat&logo=jsonwebtokens)
 
-Trace It is a full-stack lost and found platform powered by **AI semantic matching**. Instead of relying on keyword search, it uses a pre-trained sentence transformer model to understand the *meaning* of descriptions — so "dark bifold wallet" still matches "black leather wallet" even when no words overlap.
+Trace It is a full-stack lost and found platform powered by **AI semantic matching**. Instead of relying on keyword search, it uses a pre-trained sentence transformer model to understand the _meaning_ of descriptions — so "dark bifold wallet" still matches "black leather wallet" even when no words overlap.
 
 The platform allows users to:
+
 - Report lost and found items with descriptions
 - Run AI-powered semantic matching to find the most likely matches
 - Manage their reported items through a personal dashboard
@@ -49,15 +50,19 @@ The entire stack runs in Docker containers with a single command.
 ## 📸 Screenshots
 
 ### Home
+
 ![Home](frontend/public/Home.png)
 
 ### Lost Items
+
 ![Lost Items](frontend/public/Lost.png)
 
 ### Found Items
+
 ![Found Items](frontend/public/Found.png)
 
 ### AI Semantic Matching
+
 ![AI Semantic Matching](frontend/public/AI%20Semantic%20Matching.png)
 
 ---
@@ -65,24 +70,28 @@ The entire stack runs in Docker containers with a single command.
 ## ✨ Core Features
 
 ### 👤 User System
+
 - Registration and login with secure JWT authentication
 - HTTP-only cookie sessions
 - Personal dashboard showing reported items
 - Protected routes — unauthenticated users redirected to login
 
 ### 🔍 AI Semantic Matching
+
 - Powered by `sentence-transformers` and `all-MiniLM-L6-v2`
 - Understands meaning — not just keywords
 - Returns ranked matches with similarity scores (0.0 to 1.0)
 - Model baked into Docker image — instant startup, no download delay
 
 ### 📦 Lost & Found Management
+
 - Report lost items with descriptions
 - Report found items with descriptions
 - Trigger AI match for any lost item against all found items
 - View ranked match results in the UI
 
 ### 🔐 Security
+
 - JWT authentication with `jsonwebtoken`
 - Bcrypt password hashing
 - HTTP-only cookies — token never accessible via JavaScript
@@ -94,37 +103,41 @@ The entire stack runs in Docker containers with a single command.
 ## 🛠 Tech Stack
 
 ### Frontend
-| Technology | Purpose |
-|-----------|---------|
-| React + Vite | UI framework and fast build tool |
-| React Router | Client-side routing |
-| Axios | HTTP requests with cookie support |
-| Context API | Global auth state management |
+
+| Technology   | Purpose                           |
+| ------------ | --------------------------------- |
+| React + Vite | UI framework and fast build tool  |
+| React Router | Client-side routing               |
+| Axios        | HTTP requests with cookie support |
+| Context API  | Global auth state management      |
 
 ### Node Backend
-| Technology | Purpose |
-|-----------|---------|
-| Node.js + Express | REST API server |
-| Mongoose | MongoDB schema and queries |
-| JWT | Token-based authentication |
-| Bcrypt | Password hashing |
-| Axios | Calls Python AI service internally |
+
+| Technology        | Purpose                            |
+| ----------------- | ---------------------------------- |
+| Node.js + Express | REST API server                    |
+| Mongoose          | MongoDB schema and queries         |
+| JWT               | Token-based authentication         |
+| Bcrypt            | Password hashing                   |
+| Axios             | Calls Python AI service internally |
 
 ### Python AI Service
-| Technology | Purpose |
-|-----------|---------|
-| Flask | Lightweight HTTP server |
-| sentence-transformers | Text-to-vector embedding |
-| PyTorch (CPU) | ML engine underlying the model |
-| `all-MiniLM-L6-v2` | Pre-trained semantic similarity model |
+
+| Technology            | Purpose                               |
+| --------------------- | ------------------------------------- |
+| Flask                 | Lightweight HTTP server               |
+| sentence-transformers | Text-to-vector embedding              |
+| PyTorch (CPU)         | ML engine underlying the model        |
+| `all-MiniLM-L6-v2`    | Pre-trained semantic similarity model |
 
 ### Infrastructure
-| Technology | Purpose |
-|-----------|---------|
-| Docker | Containerization |
-| Docker Compose | Multi-container orchestration |
-| Nginx | Serves React static files in production |
-| MongoDB Atlas | Cloud-hosted database |
+
+| Technology     | Purpose                                 |
+| -------------- | --------------------------------------- |
+| Docker         | Containerization                        |
+| Docker Compose | Multi-container orchestration           |
+| Nginx          | Serves React static files in production |
+| MongoDB Atlas  | Cloud-hosted database                   |
 
 ---
 
@@ -217,36 +230,41 @@ TraceIt/
 ## 🔌 API Endpoints
 
 ### Authentication
-| Method | Route | Auth | Description |
-|--------|-------|------|-------------|
-| POST | `/api/auth/register` | No | Create new account |
-| POST | `/api/auth/login` | No | Login, receive JWT cookie |
-| POST | `/api/auth/logout` | Yes | Clear auth cookie |
-| GET | `/api/auth/me` | Yes | Get current user |
+
+| Method | Route                | Auth | Description               |
+| ------ | -------------------- | ---- | ------------------------- |
+| POST   | `/api/auth/register` | No   | Create new account        |
+| POST   | `/api/auth/login`    | No   | Login, receive JWT cookie |
+| POST   | `/api/auth/logout`   | Yes  | Clear auth cookie         |
+| GET    | `/api/auth/me`       | Yes  | Get current user          |
 
 ### Lost Items
-| Method | Route | Auth | Description |
-|--------|-------|------|-------------|
-| GET | `/api/lost` | Yes | Get all lost items |
-| POST | `/api/lost` | Yes | Report a lost item |
-| GET | `/api/lost/match/:id` | Yes | Run AI match for a lost item |
+
+| Method | Route                 | Auth | Description                  |
+| ------ | --------------------- | ---- | ---------------------------- |
+| GET    | `/api/lost`           | Yes  | Get all lost items           |
+| POST   | `/api/lost`           | Yes  | Report a lost item           |
+| GET    | `/api/lost/match/:id` | Yes  | Run AI match for a lost item |
 
 ### Found Items
-| Method | Route | Auth | Description |
-|--------|-------|------|-------------|
-| GET | `/api/found` | Yes | Get all found items |
-| POST | `/api/found` | Yes | Report a found item |
+
+| Method | Route        | Auth | Description         |
+| ------ | ------------ | ---- | ------------------- |
+| GET    | `/api/found` | Yes  | Get all found items |
+| POST   | `/api/found` | Yes  | Report a found item |
 
 ### Python AI Service (internal only)
-| Method | Route | Description |
-|--------|-------|-------------|
-| POST | `/match` | Returns ranked similarity scores |
+
+| Method | Route    | Description                      |
+| ------ | -------- | -------------------------------- |
+| POST   | `/match` | Returns ranked similarity scores |
 
 ---
 
 ## 🐳 Docker Setup
 
 ### Prerequisites
+
 - Docker Desktop installed and running
 - Git
 
@@ -266,11 +284,11 @@ docker compose up -d
 docker compose ps
 ```
 
-| Service | URL |
-|---------|-----|
+| Service        | URL                   |
+| -------------- | --------------------- |
 | React Frontend | http://localhost:3001 |
-| Node API | http://localhost:3000 |
-| Python AI | http://localhost:5000 |
+| Node API       | http://localhost:3000 |
+| Python AI      | http://localhost:5000 |
 
 ### Common commands
 
@@ -311,12 +329,12 @@ JWT_SECRET_KEY=your_secret_key_here
 PORT=3000
 ```
 
-| Variable | Docker value | Local dev value |
-|----------|-------------|----------------|
-| `MONGODB_URI` | Atlas URI (same) | Atlas URI (same) |
+| Variable         | Docker value            | Local dev value         |
+| ---------------- | ----------------------- | ----------------------- |
+| `MONGODB_URI`    | Atlas URI (same)        | Atlas URI (same)        |
 | `PYTHON_API_URL` | `http://python-ai:5000` | `http://localhost:5000` |
-| `JWT_SECRET_KEY` | same | same |
-| `PORT` | `3000` | `3000` |
+| `JWT_SECRET_KEY` | same                    | same                    |
+| `PORT`           | `3000`                  | `3000`                  |
 
 > **Never commit `.env` to Git.**
 
