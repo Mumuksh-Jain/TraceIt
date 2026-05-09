@@ -20,7 +20,7 @@ function Home() {
         setLostItems(lost.data.items)
         setFoundItems(found.data.items)
       } catch (error) {
-        console.error(error)
+        // console.error(error)
       }
     }
 

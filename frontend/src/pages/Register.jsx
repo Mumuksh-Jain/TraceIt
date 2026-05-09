@@ -48,7 +48,7 @@ function Register() {
       setEmail(""); setPassword(""); setUsername(""); setConfirmPassword(""); setErrors({})
       setTimeout(() => navigate('/login'), 1500)
     } catch (error) {
-      console.log(error)
+      // console.log(error)
       if (error.response?.status === 400) {
         if (error.response.data?.message?.includes('email')) setErrors({ email: "Email already registered." })
         else if (error.response.data?.message?.includes('username')) setErrors({ username: "Username already taken." })

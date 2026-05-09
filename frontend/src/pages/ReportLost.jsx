@@ -33,7 +33,7 @@ function ReportLost() {
       })
       navigate('/my-items')
     } catch (error) {
-      console.error(error)
+      // console.error(error)
     }
     setLoading(false)
   }

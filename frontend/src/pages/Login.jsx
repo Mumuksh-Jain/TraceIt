@@ -17,7 +17,7 @@ function Login() {
       login(response.data.user)
       navigate('/')
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 

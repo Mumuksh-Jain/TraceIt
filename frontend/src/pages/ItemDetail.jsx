@@ -33,7 +33,7 @@ function ItemDetail() {
           setMatches(matchResponse.data.matches)
         }
       } catch (error) {
-        console.error(error)
+        // console.error(error)
         setError("Item not found or an error occurred.")
       }
       setLoading(false)
@@ -50,7 +50,7 @@ function ItemDetail() {
       alert("Item deleted successfully!")
       navigate('/')
     } catch (error) {
-      console.error(error)
+      // console.error(error)
       alert("Failed to delete item.")
     }
   }

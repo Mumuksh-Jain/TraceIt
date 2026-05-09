@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
                     setIsLoggedIn(true)
                 }
             } catch (error) {
-                console.error("Auth check failed", error)
+                // console.error("Auth check failed", error)
             } finally {
                 setLoading(false)
             }
