@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import api from '../services/api'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate, Link } from 'react-router-dom'
-import AnimatedBackground from '../components/AnimatedBackground'
+
 
 function Register() {
   const [email, setEmail] = useState("")
@@ -67,8 +67,7 @@ function Register() {
   }
 
   return (
-    <AnimatedBackground theme="auth">
-      <div className='auth-container' style={{ background: 'transparent' }}>
+    <div className='auth-container'>
         <div className='auth-card-glass'>
           <div className='auth-header'>
  
@@ -126,8 +125,7 @@ function Register() {
           </form>
           <p className='auth-switch'>Already have an account? <Link to='/login'>Login here</Link></p>
         </div>
-      </div>
-    </AnimatedBackground>
+    </div>
   )
 }
 

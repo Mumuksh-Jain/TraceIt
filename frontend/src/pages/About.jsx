@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import AnimatedBackground from '../components/AnimatedBackground'
 
 function About() {
   const [activeStep, setActiveStep] = useState(null)
 
   return (
-    <AnimatedBackground theme="about">
-      <div className='about-container-enhanced'>
+    <div className='about-container-enhanced'>
         <div className='about-hero'>
           <h1>About TraceIt</h1>
           <p className='about-tagline'>AI-Powered Campus Lost &amp; Found Platform</p>
@@ -55,8 +53,7 @@ function About() {
             </div>
           </div>
         </section>
-      </div>
-    </AnimatedBackground>
+    </div>
   )
 }
 

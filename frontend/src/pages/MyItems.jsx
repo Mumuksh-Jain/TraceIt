@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../services/api'
 import { Link } from 'react-router-dom'
-import AnimatedBackground from '../components/AnimatedBackground'
 
 function MyItems() {
   const [lostItems, setLostItems] = useState([])
@@ -23,8 +22,7 @@ function MyItems() {
   }, [])
 
   return (
-    <AnimatedBackground theme="myitems">
-      <div className='page-container'>
+    <div className='page-container'>
         <h1 className='page-title'>My Items</h1>
         <div className='tabs'>
           <button className={`tab tab-enhanced ${activeTab === 'lost' ? 'tab-active' : ''}`}
@@ -69,8 +67,7 @@ function MyItems() {
             ))}
           </div>
         )}
-      </div>
-    </AnimatedBackground>
+    </div>
   )
 }
 

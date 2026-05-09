@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import api from '../services/api'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate, Link } from 'react-router-dom'
-import AnimatedBackground from '../components/AnimatedBackground'
+
 
 function Login() {
   const [email, setEmail] = useState("")
@@ -22,8 +22,7 @@ function Login() {
   }
 
   return (
-    <AnimatedBackground theme="auth">
-      <div className='auth-container' style={{ background: 'transparent' }}>
+    <div className='auth-container'>
         <div className='auth-card-glass'>
           <div className='auth-header'>
             <span style={{ fontSize: 40, display: 'block', marginBottom: 12, animation: 'icon3dFloat 4s ease-in-out infinite', filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.1))' }}>🔐</span>
@@ -49,8 +48,7 @@ function Login() {
             Don't have an account? <Link to='/register'>Register here</Link>
           </p>
         </div>
-      </div>
-    </AnimatedBackground>
+    </div>
   )
 }
 

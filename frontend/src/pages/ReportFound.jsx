@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
-import AnimatedBackground from '../components/AnimatedBackground'
 
 function ReportFound() {
   const [title, setTitle] = useState("")
@@ -40,8 +39,7 @@ function ReportFound() {
   }
 
   return (
-    <AnimatedBackground theme="found">
-      <div className='form-container-3d'>
+    <div className='form-container-3d'>
         <div className='form-card-3d card-found'>
           <div className='form-progress'>
             <div className='form-progress-step found active'>
@@ -112,8 +110,7 @@ function ReportFound() {
             </button>
           </form>
         </div>
-      </div>
-    </AnimatedBackground>
+    </div>
   )
 }
 

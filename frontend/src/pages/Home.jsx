@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from '../services/api'
 import { Link } from 'react-router-dom'
-import SplineBackground from '../components/SplineBackground'
 
 function Home() {
   const [lostItems, setLostItems] = useState([])
@@ -36,7 +35,7 @@ function Home() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
-      <SplineBackground />
+
       <div style={{ position: 'relative', zIndex: 1 }}>
         {/* ===== Hero Section ===== */}
         <div className="page-container" style={{ paddingTop: 32, paddingBottom: 0 }}>

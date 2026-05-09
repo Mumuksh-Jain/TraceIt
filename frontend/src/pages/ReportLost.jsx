@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../services/api'
-import AnimatedBackground from '../components/AnimatedBackground'
 
 function ReportLost() {
   const [title, setTitle] = useState("")
@@ -40,8 +39,7 @@ function ReportLost() {
   }
 
   return (
-    <AnimatedBackground theme="lost">
-      <div className='form-container-3d'>
+    <div className='form-container-3d'>
         <div className='form-card-3d card-lost'>
           <div className='form-progress'>
             <div className='form-progress-step active'>
@@ -110,8 +108,7 @@ function ReportLost() {
             </button>
           </form>
         </div>
-      </div>
-    </AnimatedBackground>
+    </div>
   )
 }
 

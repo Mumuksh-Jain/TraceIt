@@ -54,7 +54,7 @@ function ItemDetail() {
       alert("Failed to delete item.")
     }
   }
-
+  
   /**
    * Get quality tier based on match score
    * High: > 0.7 (70%)
