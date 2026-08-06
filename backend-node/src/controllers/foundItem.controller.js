@@ -4,7 +4,10 @@ async function createItem(req,res) {
     const {title,description,location,category,image}=req.body
  
     try {
-        const imageUrl = await uploadToCloudinary(req.file.buffer)
+        let imageUrl = null
+        if (req.file) {
+            imageUrl = await uploadToCloudinary(req.file.buffer)
+        }
         const item= await foundItemModel.create(
         {
             title,description,location,category,image:imageUrl,reportedBy:req.user.id

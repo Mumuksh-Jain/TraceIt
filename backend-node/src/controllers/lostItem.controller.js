@@ -6,7 +6,10 @@ async function createItem(req,res) {
     const {title,description,location,category,image}=req.body
  
     try {
-        const imageUrl = await uploadToCloudinary(req.file.buffer)
+        let imageUrl = null
+        if (req.file) {
+            imageUrl = await uploadToCloudinary(req.file.buffer)
+        }
         const item= await lostItemModel.create(
         {
             title,description,location,category,image:imageUrl,reportedBy:req.user.id
@@ -98,13 +101,30 @@ async function matchItem(req,res) {
     const id=req.params.id
     try {
         const lostItem=await lostItemModel.findById(id)
-        const foundItem=await foundItemModel.find()
+        if(!lostItem) {
+            return res.status(404).json({message:"Lost item not found"})
+        }
+        const foundItems=await foundItemModel.find()
+        if(!foundItems || foundItems.length === 0) {
+            return res.status(200).json({ matches: [] })
+        }
         const description=lostItem.description
        const response = await  axios.post(process.env.PYTHON_API_URL, {
     lost: description,
-    found: foundItem.map(item => item.description)
+    found: foundItems.map(item => ({ id: item._id, description: item.description }))
 })
-        return res.status(200).json({ matches: response.data.matches })
+        const enrichedMatches = response.data.matches.map(match => {
+            const originalItem = foundItems[match.index]
+            return {
+                ...match,
+                _id: originalItem._id,
+                title: originalItem.title,
+                location: originalItem.location,
+                category: originalItem.category,
+                image: originalItem.image
+            }
+        })
+        return res.status(200).json({ matches: enrichedMatches })
     } catch (error) {
         return res.status(404).json({message:"Error in matching",error:error.message})
     }

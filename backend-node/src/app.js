@@ -13,7 +13,7 @@ app.use(
     origin: function (origin, callback) {
       const allowedOrigins = [
         "http://localhost:5173",
-        "https://trace-it-nu.vercel.app/"
+        "https://trace-it-nu.vercel.app"
       ];
 
       if (

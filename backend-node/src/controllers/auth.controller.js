@@ -12,7 +12,10 @@ async function Register(req,res) {
         })
     if(isAlreadyUser)
     {
-        return res.status(500).json({message:"User already exists"})
+        if(isAlreadyUser.email === email) {
+            return res.status(400).json({message:"This email is already registered"})
+        }
+        return res.status(400).json({message:"This username is already taken"})
     }
      const hash= await bcrypt.hash(password,10)
         const user=await userModel.create({
