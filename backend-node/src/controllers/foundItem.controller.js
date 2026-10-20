@@ -1,5 +1,6 @@
 const foundItemModel=require("../models/foundItem.model")
 const {uploadToCloudinary} =require("../services/storage.service")
+const {checkMatchesForNewFoundItem} = require("../services/notification.service")
 async function createItem(req,res) {
     const {title,description,location,category,image}=req.body
  
@@ -12,7 +13,11 @@ async function createItem(req,res) {
         {
             title,description,location,category,image:imageUrl,reportedBy:req.user.id
         })
-    return res.status(200).json({message:"Item created successfully!",item})     
+        
+        // Asynchronously check for matching lost items and notify their owners
+        checkMatchesForNewFoundItem(item).catch(err => console.error("Notification check error:", err.message))
+
+        return res.status(200).json({message:"Item created successfully!",item})     
     } catch (error) {
         return res.status(401).json({message:"Item cannot be created ",error})
     }

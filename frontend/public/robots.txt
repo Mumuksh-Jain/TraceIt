@@ -1,0 +1,17 @@
+# Robots.txt for TraceIt Campus Lost & Found
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /report-lost
+Allow: /report-found
+Allow: /privacy
+Allow: /terms
+Allow: /login
+Allow: /register
+
+# Disallow authenticated dashboards and internal API endpoints
+Disallow: /my-items
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://trace-it-nu.vercel.app/sitemap.xml

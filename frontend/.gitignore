@@ -1,5 +1,19 @@
+# Dependencies
 node_modules/
+
+# Production build outputs
 dist/
+
+# Local environment variables containing runtime config
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
+!.env.*.example
+
+# Editor directories
+.vscode/
+.idea/
+
+# Operating system
+.DS_Store
+Thumbs.db

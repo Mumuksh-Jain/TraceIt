@@ -1,0 +1,23 @@
+{
+  "name": "TraceIt — Campus Lost & Found Platform",
+  "short_name": "TraceIt",
+  "description": "AI-powered campus lost & found platform with semantic natural language matching.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f24",
+  "theme_color": "#0a0f24",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
